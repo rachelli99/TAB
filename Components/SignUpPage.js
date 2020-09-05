@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {
   StyleSheet,
   Text,
@@ -15,86 +15,94 @@ import {
   Dimensions,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { Actions } from 'react-native-router-flux';
 
 const { width: WIDTH } = Dimensions.get("window");
 
-function SignUpScreen(props) {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.titles}>
-        <Text style={styles.title}>Task</Text>
-        <Text style={styles.title}>A</Text>
-        <Text style={styles.title}>Buddy</Text>
-      </View>
+export default class SignUpScreen extends Component {
+  
+  goToHome() {
+    Actions.home();
+  };
 
-      <View style={styles.inputContainer}>
-        <Icon
-          name={"ios-erson-outline"}
-          size={28}
-          color={"rgba(255, 255, 255, 0.7)"}
-          style={styles.inputIcon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder={"Username"}
-          placeholderTextColor={"#9F9F9F"}
-        />
-      </View>
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.titles}>
+          <Text style={styles.title}>Task</Text>
+          <Text style={styles.title}>A</Text>
+          <Text style={styles.title}>Buddy</Text>
+        </View>
 
-      <View style={styles.inputContainer}>
-        <Icon
-          name={"ios-erson-outline"}
-          size={28}
-          color={"rgba(255, 255, 255, 0.7)"}
-          style={styles.inputIcon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder={"Email"}
-          placeholderTextColor={"#9F9F9F"}
-        />
-      </View>
+        <View style={styles.inputContainer}>
+          <Icon
+            name={"ios-erson-outline"}
+            size={28}
+            color={"rgba(255, 255, 255, 0.7)"}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder={"Username"}
+            placeholderTextColor={"#9F9F9F"}
+          />
+        </View>
 
-      <View style={styles.inputContainer}>
-        <Icon
-          name={"ios-erson-outline"}
-          size={28}
-          color={"rgba(255, 255, 255, 0.7)"}
-          style={styles.inputIcon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder={"Password"}
-          placeholderTextColor={"#9F9F9F"}
-        />
-      </View>
+        <View style={styles.inputContainer}>
+          <Icon
+            name={"ios-erson-outline"}
+            size={28}
+            color={"rgba(255, 255, 255, 0.7)"}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder={"Email"}
+            placeholderTextColor={"#9F9F9F"}
+          />
+        </View>
 
-      <View style={styles.inputContainer}>
-        <Icon
-          name={"ios-erson-outline"}
-          size={28}
-          color={"rgba(255, 255, 255, 0.7)"}
-          style={styles.inputIcon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder={"Confirm Password"}
-          placeholderTextColor={"#9F9F9F"}
-        />
-      </View>
+        <View style={styles.inputContainer}>
+          <Icon
+            name={"ios-erson-outline"}
+            size={28}
+            color={"rgba(255, 255, 255, 0.7)"}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder={"Password"}
+            placeholderTextColor={"#9F9F9F"}
+          />
+        </View>
 
-      <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginButtonText}>Sign Up</Text>
-      </TouchableOpacity>
+        <View style={styles.inputContainer}>
+          <Icon
+            name={"ios-erson-outline"}
+            size={28}
+            color={"rgba(255, 255, 255, 0.7)"}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder={"Confirm Password"}
+            placeholderTextColor={"#9F9F9F"}
+          />
+        </View>
 
-      <View>
-        <TouchableOpacity onPress={() => props.navigation.goBack()}>
-          <Text style={styles.create}>Already have an account? Login Now</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={this.goToHome}>
+          <Text style={styles.loginButtonText}>Sign Up</Text>
         </TouchableOpacity>
-      </View>
 
-    </SafeAreaView>
-  );
+        <View>
+          <TouchableOpacity onPress={() => props.navigation.goBack()}>
+            <Text style={styles.create}>Already have an account? Login Now</Text>
+          </TouchableOpacity>
+        </View>
+
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -166,5 +174,3 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
   }
 });
-
-export default SignUpScreen;

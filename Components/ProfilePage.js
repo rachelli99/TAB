@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {
   StyleSheet,
   Text,
@@ -14,49 +14,57 @@ import {
   Platform,
   Dimensions,
 } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+
+import { Actions } from 'react-native-router-flux';
 
 const { width: WIDTH } = Dimensions.get("window");
 
-function ProfilePage(props) {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.titles}>
-        <Image style={styles.profile_image} source={require('../assets/001.png')} />
-        <Text style={styles.title}>Emily Wu</Text>
-        <Text style={styles.subtitle}>4000 pts</Text>
-      </View>
+export default class ProfilePage extends Component {
+  
+  login() {
+    Actions.Login();
+  };
 
-      <View style={{ flex: 2}}>
-        <View style={styles.textContainer}>
-          <Text style={styles.inputLarge}>Account Info</Text>
-        </View>
-        <View style={styles.subTextContainer}>
-          <Text style={styles.input}>Account Name:</Text>
-          <Text style={styles.input}>Emily Wu</Text>
-        </View>
-        <View style={styles.subTextContainer}>
-          <Text style={styles.input}>Email: </Text>
-          <Text style={styles.input}>emily.wu@gmail.com</Text>
-        </View>
-        <View style={styles.subTextContainer}>
-          <Text style={styles.input}>Password: </Text>
-          <Text style={styles.input}>**************</Text>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.inputLarge}>Help and Support</Text>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.inputLarge}>Redeem Points for new profile pictures</Text>
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.titles}>
+          <Image style={styles.profile_image} source={require('../assets/001.png')} />
+          <Text style={styles.title}>Emily Wu</Text>
+          <Text style={styles.subtitle}>4000 pts</Text>
         </View>
 
-        <TouchableOpacity style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>Sign Out</Text>
-        </TouchableOpacity>
-      </View>
-      {/* <NavBar /> */}
-    </SafeAreaView>
-  );
+        <View style={{ flex: 2}}>
+          <View style={styles.textContainer}>
+            <Text style={styles.inputLarge}>Account Info</Text>
+          </View>
+          <View style={styles.subTextContainer}>
+            <Text style={styles.input}>Account Name:</Text>
+            <Text style={styles.input}>Emily Wu</Text>
+          </View>
+          <View style={styles.subTextContainer}>
+            <Text style={styles.input}>Email: </Text>
+            <Text style={styles.input}>emily.wu@gmail.com</Text>
+          </View>
+          <View style={styles.subTextContainer}>
+            <Text style={styles.input}>Password: </Text>
+            <Text style={styles.input}>**************</Text>
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.inputLarge}>Help and Support</Text>
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.inputLarge}>Redeem Points for new profile pictures</Text>
+          </View>
+
+          <TouchableOpacity style={styles.loginButton} onPress={this.login}>
+            <Text style={styles.loginButtonText}>Sign Out</Text>
+          </TouchableOpacity>
+        </View>
+        {/* <NavBar /> */}
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -120,7 +128,7 @@ const styles = StyleSheet.create({
     color: "#9F9F9F"
   },
   loginButton: {
-    marginLeft: 25,
+    marginLeft: 45,
     backgroundColor: "#E3C393",
     paddingVertical: 10,
     width: WIDTH - 90,
@@ -135,5 +143,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   }
 });
-
-export default ProfilePage;

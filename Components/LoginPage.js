@@ -18,73 +18,71 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { NovaFlat_400Regular } from "@expo-google-fonts/dev";
 // import SignUpScreen from './SignUpPage.js';
 
-import {Actions} from 'react-native-router-flux'
+import {Actions} from 'react-native-router-flux';
 
 const { width: WIDTH } = Dimensions.get("window");
 
 export default class LogInScreen extends Component {
 
-    // function SignUpPage(props) {
-    //     return (
-    //         <SignUpScreen />
-    //     );
-    // }
+  signup() {
+    Actions.Signup()
+  };
 
-    signup() {
-      Actions.Signup()
-    };
+  goToHome() {
+    Actions.home();
+  };
 
-    render() {
-      return (
-          <SafeAreaView style={styles.container}>
-            <View style={styles.titles}>
-              <Text style={styles.title}>Task</Text>
-              <Text style={styles.title}>A</Text>
-              <Text style={styles.title}>Buddy</Text>
-            </View>
-      
-            <View style={styles.inputContainer}>
-              <Icon
-                name={"ios-erson-outline"}
-                size={28}
-                color={"rgba(255, 255, 255, 0.7)"}
-                style={styles.inputIcon}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder={"Username"}
-                placeholderTextColor={"#9F9F9F"}
-              />
-            </View>
-      
-            <View>
-              <Icon
-                name={"ios-erson-outline"}
-                size={28}
-                color={"rgba(255, 255, 255, 0.7)"}
-                style={styles.inputIcon}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder={"Password"}
-                secureTextEntry={true}
-                placeholderTextColor={"#9F9F9F"}
-              />
-            </View>
-      
-            <TouchableOpacity style={styles.loginButton} onPress={() => loggedIn=true}>
-              <Text style={styles.loginButtonText}>Login</Text>
+  render() {
+    return (
+        <SafeAreaView style={styles.container}>
+          <View style={styles.titles}>
+            <Text style={styles.title}>Task</Text>
+            <Text style={styles.title}>A</Text>
+            <Text style={styles.title}>Buddy</Text>
+          </View>
+    
+          <View style={styles.inputContainer}>
+            <Icon
+              name={"ios-erson-outline"}
+              size={28}
+              color={"rgba(255, 255, 255, 0.7)"}
+              style={styles.inputIcon}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder={"Username"}
+              placeholderTextColor={"#9F9F9F"}
+            />
+          </View>
+    
+          <View>
+            <Icon
+              name={"ios-erson-outline"}
+              size={28}
+              color={"rgba(255, 255, 255, 0.7)"}
+              style={styles.inputIcon}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder={"Password"}
+              secureTextEntry={true}
+              placeholderTextColor={"#9F9F9F"}
+            />
+          </View>
+    
+          <TouchableOpacity style={styles.loginButton} onPress={this.goToHome}>
+            <Text style={styles.loginButtonText}>Login</Text>
+          </TouchableOpacity>
+    
+          <View>
+            <TouchableOpacity onPress={this.signup}>
+              <Text style={styles.create}>Dont't have an account? Create Now</Text>
             </TouchableOpacity>
-      
-            <View>
-              <TouchableOpacity onPress={this.signup}>
-                <Text style={styles.create}>Dont't have an account? Create Now</Text>
-              </TouchableOpacity>
-            </View>
-      
-          </SafeAreaView>
-      );
-    }
+          </View>
+    
+        </SafeAreaView>
+    );
+  }
 }
 
 
@@ -146,7 +144,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginVertical: 40,
-    borderRadius: 10,
+    borderRadius: 10
   },
   loginButtonText: {
     color: "#FFFFFF",
@@ -156,4 +154,4 @@ const styles = StyleSheet.create({
     color: "#838383",
     textDecorationLine: "underline",
   }
-});
+});                                                                                                                                                                                                                                                                                                                                                                              
