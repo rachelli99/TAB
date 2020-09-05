@@ -10,7 +10,6 @@ import {
   FlatList,
 } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign"
-import NavBar from "./NavBar.js"
 import Header from './Header.js';
 
 const { width: WIDTH } = Dimensions.get("window");

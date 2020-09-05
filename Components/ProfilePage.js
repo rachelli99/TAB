@@ -15,7 +15,6 @@ import {
   Dimensions,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import NavBar from "./NavBar.js"
 
 const { width: WIDTH } = Dimensions.get("window");
 
