@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 // import 'react-native-gesture-handler';
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import { AppLoading } from "expo";
 import { useState } from "react";
 import { useFonts, NovaFlat_400Regular } from "@expo-google-fonts/dev";
@@ -13,16 +12,21 @@ import ProfilePage from "./Components/ProfilePage.js";
 import HistoryPage from "./Components/HistoriesPage.js";
 import TaskPage from "./Components/TaskPage.js";
 import ContactPage from "./Components/ContactPage.js";
+import NavBar from './Components/NavBar.js';
 import Navigator from "./routes/Home.js";
+//import { NavigationContainer } from "@react-navigation/native";
+//import { createStackNavigator } from 'react-navigation-stack';
 
 const Tab = createBottomTabNavigator();
+var loggedIn = false;
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     NovaFlat_400Regular,
   });
+  //const Stack = createStackNavigator();
 
-  if (fontsLoaded) {
+  if (fontsLoaded && loggedIn) {
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -59,6 +63,15 @@ export default function App() {
           <Tab.Screen name="Profile" component={ProfilePage} />
         </Tab.Navigator>
       </NavigationContainer> 
+    );
+  } else if(fontsLoaded && loggedIn==false){
+    return (
+      <Navigator />
+      /* <NavigationContainer> <Stack.Navigator headerMode='none'>
+        <Stack.Screen name="Login" component={LogInScreen} />
+        <Stack.Screen name="Sign Up" component={SignUpScreen} />
+      </Stack.Navigator> </NavigationContainer>*/
+      
     );
   } else {
     return <AppLoading />;

@@ -3,7 +3,7 @@ import LogInScreen from '../Components/LoginPage.js';
 import SignUpScreen from '../Components/SignUpPage.js';
 import {Router, Stack, Scene} from 'react-native-router-flux';
 
-export default class Navigator extends Component {
+export default class NavBar extends Component {
   render() {
     return (
       <Router>

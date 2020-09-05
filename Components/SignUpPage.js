@@ -88,7 +88,7 @@ function SignUpScreen(props) {
       </TouchableOpacity>
 
       <View>
-        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <Text style={styles.create}>Already have an account? Login Now</Text>
         </TouchableOpacity>
       </View>
