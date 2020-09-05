@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,17 +13,17 @@ import {
   Alert,
   Platform,
   Dimensions,
+  StatusBar,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { Actions } from 'react-native-router-flux';
+import { Actions } from "react-native-router-flux";
 
 const { width: WIDTH } = Dimensions.get("window");
 
 export default class SignUpScreen extends Component {
-  
   goToHome() {
     Actions.home();
-  };
+  }
 
   render() {
     return (
@@ -95,11 +95,12 @@ export default class SignUpScreen extends Component {
         </TouchableOpacity>
 
         <View>
-          <TouchableOpacity onPress={() => props.navigation.goBack()}>
-            <Text style={styles.create}>Already have an account? Login Now</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Text style={styles.create}>
+              Already have an account? Login Now
+            </Text>
           </TouchableOpacity>
         </View>
-
       </SafeAreaView>
     );
   }
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: "500",
     fontFamily: "NovaFlat_400Regular",
-    color: "#DCC5A3"
+    color: "#DCC5A3",
   },
   logoContainer: {
     alignItems: "center",
@@ -172,5 +173,5 @@ const styles = StyleSheet.create({
   create: {
     color: "#838383",
     textDecorationLine: "underline",
-  }
+  },
 });

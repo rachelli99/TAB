@@ -14,10 +14,8 @@ export default function App() {
     NovaFlat_400Regular,
   });
 
-  if(fontsLoaded){
-    return (
-      <Navigator />
-    );
+  if (fontsLoaded) {
+    return <Navigator />;
   } else {
     return <AppLoading />;
   }

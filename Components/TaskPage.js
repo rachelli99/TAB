@@ -13,17 +13,20 @@ import {
   Alert,
   Platform,
   Dimensions,
+  StatusBar,
+  ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
-import Header from './Header.js';
+import Header from "./Header.js";
+import { AutoComplete } from "material-ui";
 
-const { width: WIDTH } = Dimensions.get("window");
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 function TaskPage(props) {
   return (
     <SafeAreaView style={styles.container}>
-        <Header style={{justifyContent: "center"}} title={"Daily Task"} />
-
+      <Header style={{ justifyContent: "center" }} title={"Daily Task"} />
+      <ScrollView scrollEnabled={true}>
         <View style={styles.taskContainer}>
           <Icon
             name={"star"}
@@ -32,59 +35,73 @@ function TaskPage(props) {
             style={styles.inputIcon}
           />
           <Text style={styles.fontLarge}>TikTok Star</Text>
-          <Text style={styles.fontMed}>Record a 30 seconds video doing your best friend's worst habit.</Text>
+          <Text style={styles.fontMed}>
+            Record a 30 seconds video doing your best friend's worst habit.
+          </Text>
           <Text style={styles.fontSmall}>Time Remaining: </Text>
           <Text style={styles.fontSmall}>23 hours</Text>
+          <TouchableOpacity style={styles.loginButton}>
+            <Text style={styles.loginButtonText}>Mark as Complete</Text>
+          </TouchableOpacity>
         </View>
-        
-        {/* <NavBar /> */}
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#FAF9F9",
-    /*alignItems: "center"*/
-    /*justifyContent: "center",*/
+    alignItems: "center",
+    overflow: "scroll",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    borderColor: "black",
+    borderRadius: 2,
   },
   taskContainer: {
-    margin: 15,
+    marginHorizontal: 15,
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#FAF9F9",
     borderWidth: 1,
     backgroundColor: "#EABCB9",
-    borderRadius: 20
+    borderRadius: 20,
+    height: HEIGHT - 270,
   },
   fontLarge: {
-    marginTop: 80,
-    fontSize: 42, 
+    marginVertical: 10,
+    fontSize: 42,
     color: "#FAF9F9",
     textAlign: "center",
     fontFamily: "NovaFlat_400Regular",
   },
   fontMed: {
-    fontSize: 32, 
+    fontSize: 32,
     color: "#FAF9F9",
     textAlign: "center",
     fontFamily: "NovaFlat_400Regular",
-    padding: 40,
+    marginVertical: 20,
   },
   fontSmall: {
-    fontSize: 18, 
+    fontSize: 18,
     color: "#FAF9F9",
     textAlign: "center",
     fontFamily: "NovaFlat_400Regular",
-    bottom: 20,
   },
-  inputIcon: {
-    position: "absolute",
-    top: 20,
-    left: (WIDTH - 70 - 20 - 50) /2+25,
+  loginButton: {
+    backgroundColor: "orange",
+    paddingVertical: 10,
+    width: WIDTH - 90,
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    fontSize: 20,
+    borderRadius: 10,
+    marginTop: 20,
+  },
+  loginButtonText: {
+    color: "#FFFFFF",
+    textAlign: "center",
   },
 });
 

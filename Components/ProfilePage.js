@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,55 +13,62 @@ import {
   Alert,
   Platform,
   Dimensions,
+  StatusBar,
+  ScrollView,
 } from "react-native";
 
-import { Actions } from 'react-native-router-flux';
+import { Actions } from "react-native-router-flux";
 
 const { width: WIDTH } = Dimensions.get("window");
 
 export default class ProfilePage extends Component {
-  
   login() {
     Actions.Login();
-  };
+  }
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.titles}>
-          <Image style={styles.profile_image} source={require('../assets/001.png')} />
+          <Image
+            style={styles.profile_image}
+            source={require("../assets/001.png")}
+          />
           <Text style={styles.title}>Emily Wu</Text>
           <Text style={styles.subtitle}>4000 pts</Text>
         </View>
 
-        <View style={{ flex: 2}}>
-          <View style={styles.textContainer}>
-            <Text style={styles.inputLarge}>Account Info</Text>
-          </View>
-          <View style={styles.subTextContainer}>
-            <Text style={styles.input}>Account Name:</Text>
-            <Text style={styles.input}>Emily Wu</Text>
-          </View>
-          <View style={styles.subTextContainer}>
-            <Text style={styles.input}>Email: </Text>
-            <Text style={styles.input}>emily.wu@gmail.com</Text>
-          </View>
-          <View style={styles.subTextContainer}>
-            <Text style={styles.input}>Password: </Text>
-            <Text style={styles.input}>**************</Text>
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.inputLarge}>Help and Support</Text>
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.inputLarge}>Redeem Points for new profile pictures</Text>
-          </View>
+        <ScrollView scrollEnabled={true}>
+          <View style={{ flex: 2 }}>
+            <View style={styles.textContainer}>
+              <Text style={styles.inputLarge}>Account Info</Text>
+            </View>
+            <View style={styles.subTextContainer}>
+              <Text style={styles.input}>Account Name:</Text>
+              <Text style={styles.input}>Emily Wu</Text>
+            </View>
+            <View style={styles.subTextContainer}>
+              <Text style={styles.input}>Email: </Text>
+              <Text style={styles.input}>emily.wu@gmail.com</Text>
+            </View>
+            <View style={styles.subTextContainer}>
+              <Text style={styles.input}>Password: </Text>
+              <Text style={styles.input}>**************</Text>
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.inputLarge}>Help and Support</Text>
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.inputLarge}>
+                Redeem Points for new profile pictures
+              </Text>
+            </View>
 
-          <TouchableOpacity style={styles.loginButton} onPress={this.login}>
-            <Text style={styles.loginButtonText}>Sign Out</Text>
-          </TouchableOpacity>
-        </View>
-        {/* <NavBar /> */}
+            <TouchableOpacity style={styles.loginButton} onPress={this.login}>
+              <Text style={styles.loginButtonText}>Sign Out</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -73,14 +80,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FAF9F9",
     //alignItems: "center",
     justifyContent: "center",
+    overflow: "scroll",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   titles: {
-    flex: 1,
     backgroundColor: "#DCC5A3",
     alignItems: "center",
-    marginVertical: 50,
-    alignSelf: "stretch"
+    alignSelf: "stretch",
+    paddingVertical: 20,
   },
   profile_image: {
     alignItems: "center",
@@ -89,7 +96,7 @@ const styles = StyleSheet.create({
     /*borderRadius: 100,
     borderColor: "#ccc",
     borderWidth: 1,*/
-    marginTop: 20
+    marginTop: 20,
   },
   title: {
     fontSize: 48,
@@ -108,24 +115,24 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     borderBottomColor: "#ddd",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
   subTextContainer: {
     backgroundColor: "#E3E3E3",
     paddingHorizontal: 20,
     paddingVertical: 5,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   inputLarge: {
-    fontSize: 20, 
+    fontSize: 20,
     color: "#9F9F9F",
     padding: 20,
   },
   input: {
     padding: 3,
     fontSize: 16,
-    color: "#9F9F9F"
+    color: "#9F9F9F",
   },
   loginButton: {
     marginLeft: 45,
@@ -141,5 +148,5 @@ const styles = StyleSheet.create({
   loginButtonText: {
     color: "#FFFFFF",
     textAlign: "center",
-  }
+  },
 });

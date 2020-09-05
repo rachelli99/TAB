@@ -13,6 +13,7 @@ import {
   Alert,
   Platform,
   Dimensions,
+  StatusBar,
 } from "react-native";
 import { NovaFlat_400Regular } from "@expo-google-fonts/dev";
 
