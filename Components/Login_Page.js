@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -17,7 +17,7 @@ import {Actions} from 'react-native-router-flux';
 const { width: WIDTH } = Dimensions.get("window");
 
 export default class LogInScreen extends Component {
-
+  
   signup() {
     Actions.Signup()
   };
@@ -148,4 +148,4 @@ const styles = StyleSheet.create({
     color: "#838383",
     textDecorationLine: "underline",
   }
-});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 

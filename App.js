@@ -5,13 +5,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AppLoading } from "expo";
 import { useState } from "react";
 import { useFonts, NovaFlat_400Regular } from "@expo-google-fonts/dev";
-import LogInScreen from "./Components/LoginPage.js";
-import SignUpScreen from "./Components/SignUpPage.js";
-import ProfilePage from "./Components/ProfilePage.js";
-import HistoryPage from "./Components/HistoriesPage.js";
-import TaskPage from "./Components/TaskPage.js";
-import ContactPage from "./Components/ContactPage.js";
-import NavBar from './Components/NavBar.js';
 import Navigator from "./routes/Home.js";
 
 const Tab = createBottomTabNavigator();

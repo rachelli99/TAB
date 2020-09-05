@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,48 +8,79 @@ import {
   Platform,
   Dimensions,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
-import Icon from "react-native-vector-icons/AntDesign"
-import Header from './Header.js';
+import Dialog, { DialogContent } from "react-native-popup-dialog";
+import Header from "./Header.js";
+import Modal from "react-native-modal";
 
 const { width: WIDTH } = Dimensions.get("window");
 
-function ContactPage(props) {
-  const [people, setPeople] = useState([
-    {name:'Mario', key: require('../assets/005.jpeg')},
-    {name:'Boo', key:  require('../assets/011.png')},
-    {name:'Moe', key:  require('../assets/012.png')},
-    {name:'Wario', key:  require('../assets/010.png')},
-    {name:'Yoshi', key:  require('../assets/009.jpeg')},
-    {name:'Peach', key:  require('../assets/008.jpeg')},
-    {name:'Toad', key:  require('../assets/007.jpeg')},
-  ]);
+export default class ContactPage extends Component {
+  constructor(props) {
+    super(props);
+    this.people = [
+      { name: "Mario", key: require("../assets/005.jpeg") },
+      { name: "Boo", key: require("../assets/011.png") },
+      { name: "Moe", key: require("../assets/012.png") },
+      { name: "Wario", key: require("../assets/010.png") },
+      { name: "Yoshi", key: require("../assets/009.jpeg") },
+      { name: "Peach", key: require("../assets/008.jpeg") },
+      { name: "Toad", key: require("../assets/007.jpeg") },
+    ];
+    this.state = {
+      ModalVisible: false,
+    };
+    this.setModalVisible = this.setModalVisible.bind(this);
+  }
 
-  const Item = ({ name, image }) => (
-    <View style={styles.contactContainer}>
-      <Image style={styles.profile_image} source={image} />
-      <Text style={styles.item}>{name}</Text>
-    </View>
-  )
-  return (
-    <SafeAreaView style={styles.container}>
-      <Header title={"Contacts"} />
-      
-      <View style={styles.container}>
-        <FlatList 
-          data={people}
+  setModalVisible() {
+    this.setState({ ModalVisible: true });
+  }
 
-          renderItem={({ item }) => (
-            <View style={styles.contactContainer}>
-              <Image style={styles.profile_image} source={item.key} />
-              <Text style={styles.item}>{item.name}</Text>
-            </View>
-          )}
-        />
-      </View>
-      
-    </SafeAreaView>
-  );
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Header title={"Contacts"} />
+
+        <View style={styles.container}>
+          <FlatList
+            data={this.people}
+            renderItem={({ item }) => (
+              <View>
+                <TouchableOpacity
+                  style={styles.contactContainer}
+                  onPress={this.setModalVisible}
+                >
+                  <Image style={styles.profile_image} source={item.key} />
+                  <Text style={styles.item}>{item.name}</Text>
+                </TouchableOpacity>
+                {/* 
+              <Modal animationType="slide" transparent={false} visible={this.state.ModalVisible}>
+                <View style={styles.popup}>
+                  <Image style={styles.profile_image} source={item.key} />
+                  <Text style={styles.item}>{item.name}</Text>
+                </View>
+              </Modal>
+            */}
+                <Dialog
+                  visible={this.state.ModalVisible}
+                  onTouchOutside={() => this.setState({ ModalVisible: false })}
+                >
+                  <DialogContent style={styles.popup}>
+                    <View style={styles.popup}>
+                      {/*<Image style={styles.profile_image} source={item.key} />*/}
+                      <Text style={styles.item}>{item.name}</Text>
+                    </View>
+                  </DialogContent>
+                </Dialog>
+              </View>
+            )}
+          />
+        </View>
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -66,15 +97,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginLeft:20,
+    marginLeft: 20,
     width: WIDTH - 50,
     borderBottomColor: "#DCC5A3",
     borderBottomWidth: 1,
     //backgroundColor: '#DCC5A3'
   },
+  popup: {
+    fontSize: 40,
+    width: 20,
+  },
   name: {
-    fontSize: 26, 
-    color: "#8D8D8D"
+    fontSize: 26,
+    color: "#8D8D8D",
   },
   inputIcon: {
     position: "absolute",
@@ -82,9 +117,9 @@ const styles = StyleSheet.create({
     left: 37,
   },
   item: {
-    flex: 1, 
-    marginHorizontal: 10, 
-    padding: 15, 
+    flex: 1,
+    marginHorizontal: 10,
+    padding: 15,
     //backgroundColor: '#DCC5A3',
     color: "#8D8D8D",
     fontSize: 24,
@@ -99,7 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderColor: "#ccc",
     borderWidth: 1,
-  }
+  },
 });
 
-export default ContactPage;
+//export default ContactPage;

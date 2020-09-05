@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LogInScreen from '../Components/LoginPage.js';
+import LogInScreen from '../Components/Login_Page.js';
 import SignUpScreen from '../Components/SignUpPage.js';
 import NavBar from '../Components/NavBar.js';
 import {Router, Stack, Scene} from 'react-native-router-flux';

@@ -41,7 +41,7 @@ function HistoryPage(props) {
             color={"#969696"}
             style={styles.inputIcon}
           />
-          <Text style={styles.inputLarge}>Funny TikTok Video</Text>
+          <Text style={styles.inputLarge}>TikTok Star</Text>
           <Text style={styles.inputLarge}>08/31</Text>
         </View>
         <View style={ styles.bg3}>
@@ -61,7 +61,7 @@ function HistoryPage(props) {
             color={"#969696"}
             style={styles.inputIcon}
           />
-          <Text style={styles.inputLarge}>Play LOL Together</Text>
+          <Text style={styles.inputLarge}>LOL Laughter</Text>
           <Text style={styles.inputLarge}>08/29</Text>
         </View>
       </View>
@@ -85,7 +85,12 @@ const styles = StyleSheet.create({
         margin: 20,
         padding: 20,
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        shadowColor: '#AAA',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.8,
+        shadowRadius: 3,  
+        elevation: 5
     },
     bg2: {
         fontSize: 20, 
@@ -94,7 +99,12 @@ const styles = StyleSheet.create({
         margin: 20,
         padding: 20,
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        shadowColor: '#AAA',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.8,
+        shadowRadius: 3,  
+        elevation: 5
     },
     bg3: {
         fontSize: 20, 
@@ -103,7 +113,12 @@ const styles = StyleSheet.create({
         margin: 20,
         padding: 20,
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        shadowColor: '#AAA',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.8,
+        shadowRadius: 3,  
+        elevation: 5
     },
     bg4: {
         fontSize: 20, 
@@ -112,7 +127,12 @@ const styles = StyleSheet.create({
         margin: 20,
         padding: 20,
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        shadowColor: '#AAA',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.8,
+        shadowRadius: 3,  
+        elevation: 5
     },
     inputLarge: {
       padding: 3,

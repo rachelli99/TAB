@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   inputIcon: {
     position: "absolute",
     top: 20,
-    left: (WIDTH - 70 - 20 - 50) /2,
+    left: (WIDTH - 70 - 20 - 50) /2+25,
   },
 });
 
